@@ -14,7 +14,7 @@ described in the paper
   Data Compression Conference (DCC), IEEE, 2017.
 
 The latest version of the algorithm is available from
-https://github.com/dkempa/lz-end-toolkit.
+https://github.com/dominikkempa/lz-end-toolkit
 
 
 
@@ -25,14 +25,13 @@ The package contains a single Makefile in the main directory.
 Type 'make' to build all executables. Run each of the programs
 without any argument to see usage instructions.
 
-Example
-~~~~~~~
+### Example
 
 Assume the input file is /data/input.dat. The following
 demonstrates the simplest usage of the parsing algorithm:
 
-  $ ./parse /data/input.dat
-  $ ./verify /data/input.dat.lzend /data/input.dat
+    $ ./parse /data/input.dat
+    $ ./verify /data/input.dat.lzend /data/input.dat
 
 The first command computes the LZ-End parsing of the input.
 The second command verifies if the computed parsing indeed
@@ -46,27 +45,29 @@ is 40-bit wide (thus enabling the parsing of files of size
 up to 1TiB), and the default limit on the phrase length is
 2^20. A more advanced usage is demonstrated below.
 
-  $ ./parse /data/input.dat -i 6 -l 4mi -v -o /data/parsing.lzend
-  $ ./verify /data/parsing.lzend /data/input.dat
+    $ ./parse /data/input.dat -i 6 -l 4mi -v -o /data/parsing.lzend
+    $ ./verify /data/parsing.lzend /data/input.dat
 
 Explanation:
-- The 'i' flag allows specifying the integer size (in bytes)
+
+- The -i flag allows specifying the integer size (in bytes)
   used to encode the output parsing. In this example, the
   type is set to 6-byte integer, enabling the parsing of
   inputs up to 256TiB. Currently supported are values from
   the range [4, 8].
-- The 'l' flag allows specifying the limit on the phrase
+- The -l flag allows specifying the limit on the phrase
   length (see the paper above for details on how the limit
   affects the parsing; the default value is sufficient for
   essentially all applications). In this example, the limit
   is set to 4mi = 4 * 2^20.
-- the 'o' flag allows specifying the location and name of
+- the -o flag allows specifying the location and name of
   the file with the output parsing.
-- the 'v' flag enables the verbose mode (i.e., more detailed
+- the -v flag enables the verbose mode (i.e., more detailed
   messages during the computation).
 
 Notes:
-- The argument of the 'l' flag (limit on the phrase length)
+
+- The argument of the -l flag (limit on the phrase length)
   can be specified either explicitly or using common suffixes
   such as K, M, G, T, Ki, Mi, Gi, Ti which correspond to
   multipliers: 10^3, 10^6, 10^9, 10^12, 2^10, 2^20 2^30, 2^40.
@@ -129,12 +130,11 @@ a more space-efficient variant of the algorithm mentioned
 above. We refer to ./src/lz_end_toolkit_src/decode.hpp
 for details.
 
-Example
-~~~~~~~
+### Example
 
 To decode the parsing stored in /data/parsing.lzend, type:
 
-  $ ./decode /data/parsing.lzend
+    $ ./decode /data/parsing.lzend
 
 By default, the decoded text is stored in the file named
 as the parsing file with the appended ".decoded" suffix.
@@ -145,6 +145,7 @@ Other location and name can be specified with the -o flag
 
 Limitations
 -----------
+
 - The current code supports only inputs over byte alphabet.
   The algorithm described in the paper, however, works for
   arbitrary alphabets. Future releases of this package
@@ -161,6 +162,11 @@ the file LICENCE for more details.
 
 
 
+Authors
+-------
 
-Written by Dominik Kempa and Dmitry Kosolobov,
-May 2017.
+LZ-End Toolkit was implemented by:
+
+- [Dominik Kempa](https://scholar.google.com/citations?user=r0Kn9IUAAAAJ)
+- [Dmitry Kosolobov](https://scholar.google.com/citations?user=L5boL7MAAAAJ)
+
