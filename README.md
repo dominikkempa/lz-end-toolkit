@@ -127,7 +127,7 @@ For cases where LZ-End is used as a compressor as well as
 to demonstrate how to read and decode the parsing, this
 package provides a simple LZ-End decoder. It implements
 a more space-efficient variant of the algorithm mentioned
-above. We refer to ./src/lz_end_toolkit_src/decode.hpp
+above. We refer to ./include/lz_end_toolkit/decode.hpp
 for details.
 
 ### Example

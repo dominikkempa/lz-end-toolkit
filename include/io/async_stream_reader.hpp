@@ -1,14 +1,16 @@
 /**
- * @file    src/lz_end_toolkit_src/io/async_stream_reader.hpp
+ * @file    async_stream_reader.hpp
  * @section LICENCE
  *
  * This file is part of LZ-End Toolkit v0.1.0
+ * See: https://github.com/dominikkempa/lz-end-toolkit
+ *
  * Published in:
  *   Dominik Kempa and Dmitry Kosolobov:
  *   LZ-End Parsing in Compressed Space.
  *   Data Compression Conference (DCC), IEEE, 2017.
  *
- * Copyright (C) 2016-2017
+ * Copyright (C) 2016-2021
  *   Dominik Kempa <dominik.kempa (at) gmail.com>
  *   Dmitry Kosolobov <dkosolobov (at) mail.ru>
  *
@@ -34,8 +36,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-#ifndef __SRC_LZ_END_TOOLKIT_SRC_IO_ASYNC_STREAM_READER_HPP_INCLUDED
-#define __SRC_LZ_END_TOOLKIT_SRC_IO_ASYNC_STREAM_READER_HPP_INCLUDED
+#ifndef __IO_ASYNC_STREAM_READER_HPP_INCLUDED
+#define __IO_ASYNC_STREAM_READER_HPP_INCLUDED
 
 #include <cstdio>
 #include <cstdlib>
@@ -46,7 +48,7 @@
 #include <mutex>
 #include <condition_variable>
 
-#include "../utils.hpp"
+#include "../utils/utils.hpp"
 
 
 namespace lz_end_toolkit_private {
@@ -483,4 +485,4 @@ class async_stream_reader {
 
 }  // namespace lz_end_toolkit_private
 
-#endif  // __SRC_LZ_END_TOOLKIT_SRC_IO_ASYNC_STREAM_READER_HPP_INCLUDED
+#endif  // __IO_ASYNC_STREAM_READER_HPP_INCLUDED

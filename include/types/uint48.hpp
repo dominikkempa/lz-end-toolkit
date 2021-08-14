@@ -1,14 +1,16 @@
 /**
- * @file    src/uint48.hpp
+ * @file    uint48.hpp
  * @section LICENCE
  *
  * This file is part of LZ-End Toolkit v0.1.0
+ * See: https://github.com/dominikkempa/lz-end-toolkit
+ *
  * Published in:
  *   Dominik Kempa and Dmitry Kosolobov:
  *   LZ-End Parsing in Compressed Space.
  *   Data Compression Conference (DCC), IEEE, 2017.
  *
- * Copyright (C) 2016-2017
+ * Copyright (C) 2016-2021
  *   Dominik Kempa <dominik.kempa (at) gmail.com>
  *   Dmitry Kosolobov <dkosolobov (at) mail.ru>
  *
@@ -34,8 +36,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-#ifndef __SRC_UINT48_HPP_INCLUDED
-#define __SRC_UINT48_HPP_INCLUDED
+#ifndef __TYPES_UINT48_HPP_INCLUDED
+#define __TYPES_UINT48_HPP_INCLUDED
 
 #include <cstdint>
 #include <limits>
@@ -89,4 +91,4 @@ class numeric_limits<uint48> {
 
 }  // namespace std
 
-#endif  // __SRC_UINT48_HPP_INCLUDED
+#endif  // __TYPES_UINT48_HPP_INCLUDED

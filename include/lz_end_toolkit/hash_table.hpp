@@ -1,14 +1,16 @@
 /**
- * @file    src/lz_end_toolkit_src/hash_table.hpp
+ * @file    hash_table.hpp
  * @section LICENCE
  *
  * This file is part of LZ-End Toolkit v0.1.0
+ * See: https://github.com/dominikkempa/lz-end-toolkit
+ *
  * Published in:
  *   Dominik Kempa and Dmitry Kosolobov:
  *   LZ-End Parsing in Compressed Space.
  *   Data Compression Conference (DCC), IEEE, 2017.
  *
- * Copyright (C) 2016-2017
+ * Copyright (C) 2016-2021
  *   Dominik Kempa <dominik.kempa (at) gmail.com>
  *   Dmitry Kosolobov <dkosolobov (at) mail.ru>
  *
@@ -34,13 +36,13 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-#ifndef __SRC_LZ_END_TOOLKIT_SRC_HASH_TABLE_HPP_INCLUDED
-#define __SRC_LZ_END_TOOLKIT_SRC_HASH_TABLE_HPP_INCLUDED
+#ifndef __LZ_END_TOOLKIT_HASH_TABLE_HPP_INCLUDED
+#define __LZ_END_TOOLKIT_HASH_TABLE_HPP_INCLUDED
 
 #include <limits>
 #include <algorithm>
 
-#include "utils.hpp"
+#include "../utils/utils.hpp"
 
 
 namespace lz_end_toolkit_private {
@@ -164,4 +166,4 @@ class hash_table {
 
 }  // namespace lz_end_toolkit_private
 
-#endif  // __SRC_LZ_END_TOOLKIT_SRC_HASH_TABLE_HPP_INCLUDED
+#endif  // __LZ_END_TOOLKIT_HASH_TABLE_HPP_INCLUDED

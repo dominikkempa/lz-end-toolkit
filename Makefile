@@ -6,13 +6,13 @@ CFLAGS = -Wall -Wextra -Wshadow -funroll-loops -DNDEBUG -O3 -march=native -pthre
 all: parse verify decode
 
 parse:
-	$(CC) $(CFLAGS) -o parse ./src/main_parse.cpp ./src/lz_end_toolkit_src/utils.cpp
+	$(CC) $(CFLAGS) -o parse ./src/main_parse.cpp ./src/utils.cpp
 
 verify:
-	$(CC) $(CFLAGS) -o verify ./src/main_verify.cpp ./src/lz_end_toolkit_src/utils.cpp
+	$(CC) $(CFLAGS) -o verify ./src/main_verify.cpp ./src/utils.cpp
 
 decode:
-	$(CC) $(CFLAGS) -o decode ./src/main_decode.cpp ./src/lz_end_toolkit_src/utils.cpp
+	$(CC) $(CFLAGS) -o decode ./src/main_decode.cpp ./src/utils.cpp
 
 clean:
 	/bin/rm -f *.o

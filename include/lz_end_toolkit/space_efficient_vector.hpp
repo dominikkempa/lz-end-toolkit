@@ -1,14 +1,16 @@
 /**
- * @file    src/lz_end_toolkit_src/space_efficient_vector.hpp
+ * @file    space_efficient_vector.hpp
  * @section LICENCE
  *
  * This file is part of LZ-End Toolkit v0.1.0
+ * See: https://github.com/dominikkempa/lz-end-toolkit
+ *
  * Published in:
  *   Dominik Kempa and Dmitry Kosolobov:
  *   LZ-End Parsing in Compressed Space.
  *   Data Compression Conference (DCC), IEEE, 2017.
  *
- * Copyright (C) 2016-2017
+ * Copyright (C) 2016-2021
  *   Dominik Kempa <dominik.kempa (at) gmail.com>
  *   Dmitry Kosolobov <dkosolobov (at) mail.ru>
  *
@@ -34,13 +36,13 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-#ifndef __SRC_LZ_END_TOOLKIT_SRC_SPACE_EFFICIENT_VECTOR_HPP_INCLUDED
-#define __SRC_LZ_END_TOOLKIT_SRC_SPACE_EFFICIENT_VECTOR_HPP_INCLUDED
+#ifndef __LZ_END_TOOLKIT_SPACE_EFFICIENT_VECTOR_HPP_INCLUDED
+#define __LZ_END_TOOLKIT_SPACE_EFFICIENT_VECTOR_HPP_INCLUDED
 
 #include <cstdint>
 #include <algorithm>
 
-#include "utils.hpp"
+#include "../utils/utils.hpp"
 
 
 namespace lz_end_toolkit_private {
@@ -185,4 +187,4 @@ class space_efficient_vector {
 
 }  // namespace lz_end_toolkit_private
 
-#endif  // __SRC_LZ_END_TOOLKIT_SRC_SPACE_EFFICIENT_VECTOR_HPP_INCLUDED
+#endif  // __LZ_END_TOOLKIT_SPACE_EFFICIENT_VECTOR_HPP_INCLUDED

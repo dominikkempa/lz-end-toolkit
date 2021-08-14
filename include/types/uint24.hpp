@@ -1,14 +1,16 @@
 /**
- * @file    src/uint40.hpp
+ * @file    uint24.hpp
  * @section LICENCE
  *
  * This file is part of LZ-End Toolkit v0.1.0
+ * See: https://github.com/dominikkempa/lz-end-toolkit
+ *
  * Published in:
  *   Dominik Kempa and Dmitry Kosolobov:
  *   LZ-End Parsing in Compressed Space.
  *   Data Compression Conference (DCC), IEEE, 2017.
  *
- * Copyright (C) 2016-2017
+ * Copyright (C) 2016-2021
  *   Dominik Kempa <dominik.kempa (at) gmail.com>
  *   Dmitry Kosolobov <dkosolobov (at) mail.ru>
  *
@@ -34,59 +36,57 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-#ifndef __SRC_UINT40_HPP_INCLUDED
-#define __SRC_UINT40_HPP_INCLUDED
+#ifndef __TYPES_UINT24_HPP_INCLUDED
+#define __TYPES_UINT24_HPP_INCLUDED
 
 #include <cstdint>
 #include <limits>
 
 
-class uint40 {
+class uint24 {
   private:
-    std::uint32_t low;
+    std::uint16_t low;
     std::uint8_t high;
 
   public:
-    uint40() {}
-    uint40(std::uint32_t l, std::uint8_t h) : low(l), high(h) {}
-    uint40(const uint40& a) : low(a.low), high(a.high) {}
-    uint40(const std::int32_t& a) : low(a), high(0) {}
-    uint40(const std::uint32_t& a) : low(a), high(0) {}
-    uint40(const std::uint64_t& a) :
-      low(a & 0xFFFFFFFF), high((a >> 32) & 0xFF) {}
-    uint40(const std::int64_t& a) :
-      low(a & 0xFFFFFFFFL), high((a >> 32) & 0xFF) {}
+    uint24() {}
+    uint24(std::uint16_t l, std::uint8_t h) : low(l), high(h) {}
+    uint24(const uint24& a) : low(a.low), high(a.high) {}
+    uint24(const std::int32_t& a) : low(a & 0xFFFF), high((a >> 16) & 0xFF) {}
+    uint24(const std::uint32_t& a) : low(a & 0xFFFF), high((a >> 16) & 0xFF) {}
+    uint24(const std::uint64_t& a) : low(a & 0xFFFF), high((a >> 16) & 0xFF) {}
+    uint24(const std::int64_t& a) : low(a & 0xFFFFL), high((a >> 16) & 0xFF) {}
 
     inline operator uint64_t() const {
-      return (((std::uint64_t)high) << 32) | (std::uint64_t)low;  }
-    inline bool operator == (const uint40& b) const {
+      return (((uint64_t)high) << 16) | (uint64_t)low; }
+    inline bool operator == (const uint24& b) const {
       return (low == b.low) && (high == b.high); }
-    inline bool operator != (const uint40& b) const {
+    inline bool operator != (const uint24& b) const {
       return (low != b.low) || (high != b.high); }
 } __attribute__((packed));
 
 namespace std {
 
 template<>
-struct is_unsigned<uint40> {
+struct is_unsigned<uint24> {
   public:
     static const bool value = true;
 };
 
 template<>
-class numeric_limits<uint40> {
+class numeric_limits<uint24> {
   public:
-    static uint40 min() {
-      return uint40(std::numeric_limits<std::uint32_t>::min(),
+    static uint24 min() {
+      return uint24(std::numeric_limits<std::uint16_t>::min(),
           std::numeric_limits<std::uint8_t>::min());
     }
 
-    static uint40 max() {
-      return uint40(std::numeric_limits<std::uint32_t>::max(),
+    static uint24 max() {
+      return uint24(std::numeric_limits<std::uint16_t>::max(),
           std::numeric_limits<std::uint8_t>::max());
     }
 };
 
 }  // namespace std
 
-#endif  // __SRC_UINT40_HPP_INCLUDED
+#endif  // __TYPES_UINT24_HPP_INCLUDED

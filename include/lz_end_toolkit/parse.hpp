@@ -1,14 +1,16 @@
 /**
- * @file    src/lz_end_toolkit_src/parse.hpp
+ * @file    parse.hpp
  * @section LICENCE
  *
  * This file is part of LZ-End Toolkit v0.1.0
+ * See: https://github.com/dominikkempa/lz-end-toolkit
+ *
  * Published in:
  *   Dominik Kempa and Dmitry Kosolobov:
  *   LZ-End Parsing in Compressed Space.
  *   Data Compression Conference (DCC), IEEE, 2017.
  *
- * Copyright (C) 2016-2017
+ * Copyright (C) 2016-2021
  *   Dominik Kempa <dominik.kempa (at) gmail.com>
  *   Dmitry Kosolobov <dkosolobov (at) mail.ru>
  *
@@ -34,8 +36,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-#ifndef __SRC_LZ_END_TOOLKIT_SRC_PARSE_HPP_INCLUDED
-#define __SRC_LZ_END_TOOLKIT_SRC_PARSE_HPP_INCLUDED
+#ifndef __LZ_END_TOOLKIT_PARSE_HPP_INCLUDED
+#define __LZ_END_TOOLKIT_PARSE_HPP_INCLUDED
 
 #include <cstdio>
 #include <cstdlib>
@@ -53,11 +55,10 @@
 #include "rmq_tree.hpp"
 #include "construct_lcp.hpp"
 #include "construct_sa.hpp"
-#include "utils.hpp"
-
-#include "../uint24.hpp"
-#include "../uint40.hpp"
-#include "../uint48.hpp"
+#include "../utils/utils.hpp"
+#include "../types/uint24.hpp"
+#include "../types/uint40.hpp"
+#include "../types/uint48.hpp"
 
 
 namespace lz_end_toolkit_private {
@@ -1621,4 +1622,4 @@ void parse(
       text_filename, output_filename, phrase_length_limit, verbose);
 }
 
-#endif  // __SRC_LZ_END_TOOLKIT_SRC_PARSE_HPP_INCLUDED
+#endif  // __LZ_END_TOOLKIT_PARSE_HPP_INCLUDED
