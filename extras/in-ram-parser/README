@@ -1,0 +1,3 @@
+The in-RAM version of the algorithm. Simply type `make' in
+the directory with Makefile to compile, and then run the
+program without any arguments for usage instructions.
