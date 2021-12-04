@@ -68,7 +68,6 @@ bool marked_lcp(
     const std::uint64_t text_pos,
     const std::uint64_t text_length,
     const std::uint64_t absorb_length,
-    const std::uint64_t isa_pos_to_ignore,
     const std::uint64_t * const sa_of_rev_text,
     const text_offset_type * const isa_of_rev_text,
     const predecessor_tree &marked,
@@ -78,9 +77,6 @@ bool marked_lcp(
 
   const std::uint64_t pos = isa_of_rev_text[text_pos];
   std::uint64_t left = marked.pred(pos);
-
-  if (left > 0 && left == isa_pos_to_ignore + 1)
-    left = marked.pred(isa_pos_to_ignore);
 
   if (left > 0) {
     if (lcp_rmq.query(left, pos + 1, absorb_length)) {
@@ -102,8 +98,6 @@ bool marked_lcp(
   }
 
   std::uint64_t right = marked.succ(pos);
-  if (right < text_length && right == isa_pos_to_ignore)
-    right = marked.succ(isa_pos_to_ignore);
   if (right < text_length) {
     if (lcp_rmq.query(pos + 1, right + 1, absorb_length)) {
       std::uint64_t low = 0;
@@ -228,17 +222,18 @@ void compute_lzend(
           parsed_prefix_length - last_phrase_len - 1;
         const std::uint64_t isa_pos_to_ignore =
           isa_of_rev_text[text_pos_to_ignore];
-
+        marked->reset(isa_pos_to_ignore);
         if (marked_lcp<char_type, text_offset_type, lcp_int_type>(
               parsed_prefix_length - 1, text_length,
-              two_last_phrases_len, isa_pos_to_ignore, sa_of_rev_text,
+              two_last_phrases_len, sa_of_rev_text,
               isa_of_rev_text, *marked, recent_phrase_ends, prev_phrase_id,
               *lcp_rmq)) {
-          marked->reset(isa_pos_to_ignore);
           parsing->pop_back();
           recent_phrase_ends.pop_back();
           parsing->back().m_len = two_last_phrases_len + 1;
           found = true;
+        } else {
+          marked->set(isa_pos_to_ignore);
         }
       }
 
@@ -248,7 +243,7 @@ void compute_lzend(
           (*parsing)[cur_parsing_size - 1].m_len;
         if (marked_lcp<char_type, text_offset_type, lcp_int_type>(
               parsed_prefix_length - 1, text_length,
-              last_phrase_len, text_length,
+              last_phrase_len,
               sa_of_rev_text, isa_of_rev_text,
               *marked, recent_phrase_ends,
               prev_phrase_id, *lcp_rmq)) {
